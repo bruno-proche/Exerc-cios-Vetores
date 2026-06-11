@@ -1,0 +1,27 @@
+/******************************************************************************
+
+Leia um vetor de 40 posições. Contar e escrever quantos valores pares ele possui
+
+
+*******************************************************************************/
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int vet [40], cont = 0;
+    
+    for (int i = 0; i < 40; i++){
+        vet[i] = i;
+    }
+    
+    for (int i = 0; i < 40; i++){
+        if (vet[i] % 2 == 0){
+            cout<<"O valor " <<vet[i]<< " na posição: "<<i<<" é par."<<endl;
+            cont++;
+        }
+    }
+    cout<<"Esse vetor de 40 posições possui "<<cont<<" números pares."<<endl;
+    
+    return 0;
+}
