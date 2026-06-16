@@ -1,0 +1,40 @@
+#include <iostream>
+using namespace std;
+#include <time.h>
+#define MAX 5
+
+/**Elabore um programa que preencha uma matriz (utilizando sorteia) 5 x 5, e logo após 
+identifique o maior elemento da matriz. Exiba o resultado. */
+
+int main() {
+
+    
+    srand(time(NULL));
+    int matriz[MAX][MAX];
+    int maior, menor;
+
+    for (int i = 0; i < MAX; i++) {
+        for (int j = 0; j < MAX; j++) {
+            matriz[i][j] = rand() % 100;
+            cout<<matriz[i][j]<<" ";
+        }
+        cout << endl;
+    }
+    
+    maior = matriz[0][0];
+    menor = matriz[0][0];
+
+    for (int i = 0; i < MAX; i++) {
+        for (int j = 0; j < MAX; j++) {
+            if (matriz[i][j] > maior) {
+                maior = matriz[i][j];
+            }
+            if (matriz[i][j] < menor) {
+                menor = matriz[i][j];
+            }
+        }
+    }
+    cout << "O maior elemento da matriz é: " << maior << endl;
+    cout << "O menor elemento da matriz é: " << menor << endl;
+    return 0;
+}
