@@ -1,0 +1,49 @@
+#include <iostream>
+using namespace std;
+#define linha 3
+#define coluna 5
+/**Faça um algoritmo que realize as seguintes tarefas com matrizes 3 x 5 de números inteiros: 
+a) Ler uma matriz A. 
+b) Ler uma matriz B. 
+c) Gerar uma matriz C com a soma dos elementos da matriz A e B. 
+d) Mostrar todos os elementos da linha 2 da matriz C. 
+e) Mostrar todos os elementos da coluna 3 da matriz C. */
+
+int main() {
+
+    int matriz[linha][coluna];
+    int matriz2[linha][coluna];
+    int matriz3[linha][coluna];
+    
+    cout<<"Digite os elementos da matriz A: "<<endl;
+    
+    for (int i = 0; i < linha; i++){
+        for (int j = 0; j < coluna; j++){
+            cin >> matriz[i][j];
+        }
+    }
+    
+    cout<<"Digite os elementos da matriz B: "<<endl;
+    
+    for (int i = 0; i < linha; i++){
+        for (int j = 0; j < coluna; j++){
+            cin >> matriz2[i][j];   
+        }
+        cout << endl;
+    }
+
+    for (int i = 0; i < linha; i++){
+        for (int j = 0; j < coluna; j++){
+            matriz3[i][j] = matriz[i][j] + matriz2[i][j];
+        }
+    }
+    cout<<"Linha 2 da matriz C: "<<endl;
+    for (int i = 0; i < coluna; i++){
+        cout<<matriz3[1][i]<<" "<<endl;
+    }
+    cout << "Coluna 3 da matriz C: " << endl;
+    for (int i = 0; i < linha; i++){
+        cout << matriz3[i][2] << " ";
+    }
+    return 0;
+}
