@@ -1,0 +1,50 @@
+#include <iostream>
+#include <locale.h>
+using namespace std;
+#include <time.h>
+#define MAX 5
+
+/**Faça um programa que preencha, utilizando sorteia, uma matriz 5x5. A seguir, crie dois 
+vetores e coloque, em um, a soma das linhas da matriz, e no outro a soma das colunas da 
+matriz. Exiba o resultado. */
+
+int main() {
+
+    int matriz[MAX][MAX];
+    int vetor_linhas[MAX];
+    int vetor_colunas[MAX];
+
+    int soma = 0;
+    setlocale(LC_ALL, "Portuguese");
+    srand(time(NULL));
+    
+    for (int i = 0; i < MAX; i++){
+        for (int j = 0; j < MAX; j++){
+            matriz[i][j] = rand() % 10;
+        }
+    }
+    for (int i = 0; i < MAX; i++){
+        vetor_linhas[i] = matriz[i][0] + matriz[i][1] + matriz[i][2] + matriz[i][3] + matriz[i][4];
+    }
+    for (int i = 0; i < MAX; i++){
+        vetor_colunas[i] = matriz[0][i] + matriz[1][i] + matriz[2][i] + matriz[3][i] + matriz[4][i];
+    }
+    for (int i = 0; i < MAX; i++){
+        for (int j = 0; j < MAX; j++){
+            cout << matriz[i][j] << " ";
+        }
+        cout << endl;
+    }
+    cout << "Somas das linhas: ";
+    for (int i = 0; i < MAX; i++){
+        cout << vetor_linhas[i] << " ";
+    }
+    cout << endl;
+    cout << "Somas das colunas: ";
+    for (int i = 0; i < MAX; i++){
+        cout << vetor_colunas[i] << " ";
+    }
+    cout << endl;
+
+    return 0;
+}
