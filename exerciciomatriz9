@@ -1,0 +1,87 @@
+/******************************************************************************
+
+Faça um algoritmo que leia duas matrizes X e Y, quadradas com ordem 5, e faça as 
+seguintes manipulações: 
+• Gere uma matriz W com os menores elementos entre as matrizes X e Y, ou seja, um 
+elemento Wij possui o menor valor entre os elementos Xij e Yij. Se os elementos forem 
+iguais ambos são o menor valor. check
+• Gere um vetor com os elementos da diagonal principal da matriz X; check
+• Encontre a coluna da matriz Y que possui a menor soma do valor de seus elementos 
+dentre todas as colunas da matriz, e mostre qual é a posição dessa coluna. Caso 
+existam somas de colunas iguais considerar a primeira coluna com a ocorrência do 
+valor.
+
+*******************************************************************************/
+#include <iostream>
+#include <time.h>
+#define MAX 5
+using namespace std;
+
+int main()
+{
+    int x[MAX][MAX], y[MAX][MAX], w[MAX][MAX], vetorx[MAX], maiorelemento[MAX], menorelemento[MAX], menorsoma, posicao;
+    srand(time(NULL));
+    int i = 0, j  = 0;
+    
+    cout<<"Matriz X: "<<endl<<endl;
+    for (i = 0; i < MAX; i++){
+        for (j = 0; j < MAX; j++){
+            x[i][j] = rand() % 10;
+            cout<<x[i][j];
+            cout<<" ";
+            if (i == j){
+                vetorx[i] = x[i][j];
+            }
+        }
+        cout<<"  "<<endl;
+    }
+    
+    cout<<endl;
+    cout<<"Matriz Y: "<<endl<<endl;
+    for (i = 0; i < MAX; i++){
+        for (j = 0; j < MAX; j++){
+            y[i][j] = rand() % 10;
+            cout<<y[i][j];
+            cout<<" ";
+        }
+        cout<<"  "<<endl;
+    }
+    
+    for (j = 0; j < MAX; j++){
+        int soma = 0;
+        for (i = 0; i < MAX; i++){
+            soma+= y[i][j];
+        }
+        if (j == 0){
+            menorsoma = soma;
+            posicao = j;
+        }
+        else if (soma < menorsoma){
+            menorsoma = soma;
+            posicao = j;
+        }
+    }
+    cout<<"\nMenor soma: "<<menorsoma;
+    cout<<"\nColuna: "<<posicao<<endl;
+    
+    cout<<endl;
+    cout<<"Matriz W: "<<endl<<endl;
+    
+    for (i = 0; i < MAX; i++){
+        for (j = 0; j < MAX; j++){
+        if (x[i][j] < y[i][j]){
+            w[i][j] = x[i][j];
+        }
+        else {
+            w[i][j] = y[i][j];
+        }
+        cout<<w[i][j];
+        cout<<" ";
+    }
+    cout<<" "<<endl;
+}
+    
+    
+    
+    return 0;
+}
