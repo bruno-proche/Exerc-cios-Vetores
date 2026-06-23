@@ -13,75 +13,66 @@ valor.
 
 *******************************************************************************/
 #include <iostream>
-#include <time.h>
-#define MAX 5
 using namespace std;
+#define max 5
+#include <time.h>
 
 int main()
 {
-    int x[MAX][MAX], y[MAX][MAX], w[MAX][MAX], vetorx[MAX], maiorelemento[MAX], menorelemento[MAX], menorsoma, posicao;
+    int matriz_x[max][max], matriz_y[max][max], matriz_w[max][max], vetor[max], soma = 0, menorsoma, posicao;
     srand(time(NULL));
-    int i = 0, j  = 0;
     
-    cout<<"Matriz X: "<<endl<<endl;
-    for (i = 0; i < MAX; i++){
-        for (j = 0; j < MAX; j++){
-            x[i][j] = rand() % 10;
-            cout<<x[i][j];
-            cout<<" ";
+    cout<<"Matriz X: "<<endl;
+    for (int i = 0; i < max; i++){
+        for (int j = 0; j < max; j++){
+            matriz_x[i][j] = rand() % 20;
+            cout<<matriz_x[i][j]<<"  ";
             if (i == j){
-                vetorx[i] = x[i][j];
+                vetor[i] = matriz_x[i][j];
             }
         }
-        cout<<"  "<<endl;
+        cout<<endl;
     }
-    
-    cout<<endl;
-    cout<<"Matriz Y: "<<endl<<endl;
-    for (i = 0; i < MAX; i++){
-        for (j = 0; j < MAX; j++){
-            y[i][j] = rand() % 10;
-            cout<<y[i][j];
-            cout<<" ";
+    cout<<"\nMatriz Y: "<<endl;
+    for (int i = 0; i < max; i++){
+        for (int j = 0; j < max; j++){
+            matriz_y[i][j] = rand() % 20;
+            cout<<matriz_y[i][j]<<"  ";
         }
-        cout<<"  "<<endl;
+        cout<<endl;
     }
-    
-    for (j = 0; j < MAX; j++){
-        int soma = 0;
-        for (i = 0; i < MAX; i++){
-            soma+= y[i][j];
+    cout<<"\nMatriz W: "<<endl;
+    for (int i = 0; i < max; i++){
+        for (int j = 0; j < max; j++){
+            if (matriz_y[i][j] < matriz_x[i][j]){
+                matriz_w [i][j] = matriz_y[i][j];
+            }
+            else if (matriz_x[i][j] < matriz_y[i][j]){
+                matriz_w[i][j] = matriz_x[i][j]; 
+            }
+            else{
+                matriz_w[i][j] = matriz_x[i][j];
+            }
+            cout<<matriz_w[i][j]<<"  ";
+        }
+        cout<<endl;
+    }
+    for (int j = 0; j < max; j++){
+        soma = 0;
+        for (int i = 0; i < max; i++){
+            soma+= matriz_y[i][j];
         }
         if (j == 0){
-            menorsoma = soma;
-            posicao = j;
-        }
-        else if (soma < menorsoma){
-            menorsoma = soma;
-            posicao = j;
-        }
+                menorsoma = soma;
+                posicao = j;
+            }
+            else if (soma < menorsoma ){
+                menorsoma = soma;
+                posicao = j;
+            }
     }
-    cout<<"\nMenor soma: "<<menorsoma;
-    cout<<"\nColuna: "<<posicao<<endl;
     
-    cout<<endl;
-    cout<<"Matriz W: "<<endl<<endl;
-    
-    for (i = 0; i < MAX; i++){
-        for (j = 0; j < MAX; j++){
-        if (x[i][j] < y[i][j]){
-            w[i][j] = x[i][j];
-        }
-        else {
-            w[i][j] = y[i][j];
-        }
-        cout<<w[i][j];
-        cout<<" ";
-    }
-    cout<<" "<<endl;
-}
-    
-    
-    
+    cout<<"\nMenor soma das colunas da matriz Y: "<<menorsoma<<endl;
+    cout<<"Posição [ "<<posicao<<" ]";
     return 0;
 }
