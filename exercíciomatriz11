@@ -1,0 +1,37 @@
+#include <iostream>
+using namespace std;
+#include <cstdlib>
+#include <ctime>
+
+/**) Elabore um programa em C++ que preencha uma matriz 3x3 e rotacione-a como no 
+exemplo abaixo: */
+
+int main(){
+    int matriz[3][3], matriz2[3][3];
+    int soma = 0, variacao = 10;
+    srand(time(NULL)); 
+
+    cout<<"Matriz Original: "<<endl;
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            matriz[i][j] = variacao += 1; 
+            cout << matriz[i][j] << " ";
+        }
+        cout << endl;
+    }
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            matriz2[j][2 - i] = matriz[i][j];
+        }
+    }
+
+    cout << "Matriz rotacionada:" << endl;
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            cout << matriz2[i][j] << " ";
+        }
+        cout << endl;
+    }
+
+    return 0;
+}
