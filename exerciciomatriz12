@@ -1,0 +1,25 @@
+#include <iostream>
+using namespace std;
+#include <cstdlib>
+#include <ctime>
+
+/**) Elabore um programa em C++ que preencha uma matriz 3x3 e rotacione-a como no 
+exemplo abaixo: */
+
+int main(){
+    int matriz[5][5];
+    int variacao = -2, variacao_impar = -1; 
+
+    for (int i = 0; i < 5; i++){
+        for (int j = 0; j < 5; j++){
+            if (i % 2 == 0){
+                matriz [i][j] = variacao += 2;
+            } else {
+                matriz [i][j] = variacao_impar += 2;        
+            }
+            cout << matriz[i][j] << "  ";
+        }
+        cout << endl;
+    }
+    return 0;
+}
